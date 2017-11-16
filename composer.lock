@@ -966,16 +966,16 @@
         },
         {
             "name": "lyssal/doctrine-orm",
-            "version": "0.1",
+            "version": "0.1.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/Lyssal/doctrine-orm.git",
-                "reference": "72d6a0cb947fcc5909b1679041ce22ecda9eb5f3"
+                "reference": "697d66183a564fe13c21bb662ba154517b18cbdf"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/Lyssal/doctrine-orm/zipball/72d6a0cb947fcc5909b1679041ce22ecda9eb5f3",
-                "reference": "72d6a0cb947fcc5909b1679041ce22ecda9eb5f3",
+                "url": "https://api.github.com/repos/Lyssal/doctrine-orm/zipball/697d66183a564fe13c21bb662ba154517b18cbdf",
+                "reference": "697d66183a564fe13c21bb662ba154517b18cbdf",
                 "shasum": ""
             },
             "require": {
@@ -1006,7 +1006,7 @@
                 "orm",
                 "repository"
             ],
-            "time": "2017-10-04T11:34:05+00:00"
+            "time": "2017-11-13T22:52:20+00:00"
         },
         {
             "name": "lyssal/doctrine-orm-bundle",
