@@ -127,6 +127,30 @@ class Category
     }
 
     /**
+     * Set position
+     *
+     * @param string $position
+     *
+     * @return Category
+     */
+    public function setPosition($position)
+    {
+        $this->position = $position;
+
+        return $this;
+    }
+
+    /**
+     * Get position
+     *
+     * @return string
+     */
+    public function getPosition()
+    {
+        return $this->position;
+    }
+
+    /**
      * Add child
      *
      * @param \App\Entity\Category $child
