@@ -22,7 +22,7 @@ class CategoryController extends Controller
      *
      * @return Response
      */
-    public function view(Category $category, $read = null)
+    public function viewAction(Category $category, $read = null)
     {
         if (null !== $read) {
             $read = ('1' === $read);

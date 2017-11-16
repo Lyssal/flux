@@ -20,7 +20,7 @@ class FeedItemController extends Controller
      *
      * @return Response
      */
-    public function read(FeedItem $feedItem, $read)
+    public function readAction(FeedItem $feedItem, $read)
     {
         $feedItem->setRead($read);
         $this->container->get('app.manager.feed_item')->save($feedItem);
@@ -37,7 +37,7 @@ class FeedItemController extends Controller
      *
      * @return Response
      */
-    public function remove(FeedItem $feedItem)
+    public function removeAction(FeedItem $feedItem)
     {
         $this->container->get('app.manager.feed_item')->delete($feedItem);
 

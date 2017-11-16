@@ -22,7 +22,7 @@ class IndexController extends Controller
      *
      * @return Response
      */
-    public function view()
+    public function viewAction()
     {
         return $this->render('index/view.html.twig', [
             'feedCount' => $this->container->get('app.manager.feed')->count(),

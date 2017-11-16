@@ -22,7 +22,7 @@ class FeedController extends Controller
      *
      * @return Response
      */
-    public function view(Feed $feed)
+    public function viewAction(Feed $feed)
     {
         return $this->render('feed/view.html.twig', [
             'feed' => $feed
@@ -36,7 +36,7 @@ class FeedController extends Controller
      *
      * @return Response
      */
-    public function viewFile(Feed $feed)
+    public function viewFileAction(Feed $feed)
     {
         $feedFile = new SimplePie();
         $feedFile->set_cache_location($this->container->getParameter('kernel.cache_dir'));
@@ -56,7 +56,7 @@ class FeedController extends Controller
      *
      * @return Response
      */
-    public function importAll()
+    public function importAllAction()
     {
         $this->container->get(FeedImport::class)->importAll();
 
