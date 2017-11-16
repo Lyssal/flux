@@ -1,0 +1,11 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}{{ appellation(feed) }}{% endblock %}
+
+{% block body %}
+
+    {%- for item in feed.items -%}
+        {{ appellation_html(item) }}
+    {%- endfor -%}
+
+{% endblock %}

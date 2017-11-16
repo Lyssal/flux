@@ -1,0 +1,12 @@
+@import "app-global";
+
+@import "foundation-redefinitions";
+@import "foundation";
+@include foundation-everything;
+@include foundation-flex-grid;
+
+$fa-font-path: "/fonts";
+@import "font-awesome";
+
+@import 'include/page';
+@import 'include/feed';

@@ -1,0 +1,5 @@
+{% for item in items %}
+	<div class="item">
+	    {{ include('simplepie/item.html.twig', { 'item': item }) }}
+	</div>
+{% endfor %}

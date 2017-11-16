@@ -1,0 +1,18 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}{{ app_title }}{% endblock %}
+
+{% block body %}
+
+    <div class="callout primary">
+        <div class="row">
+            <div class="small-6 columns">
+                <em class="fa fa-rss"></em> &nbsp; {{ feedCount }}
+            </div>
+            <div class="small-6 columns">
+                <em class="fa fa-eye-slash"></em> &nbsp; {{ unreadFeedItemCount }}
+            </div>
+        </div>
+    </div>
+
+{% endblock %}

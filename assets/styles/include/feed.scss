@@ -1,0 +1,40 @@
+.accordion-feed {
+    .delete {
+        font-size: 1rem;
+        padding: 0.74rem 1rem 0.7rem 0.3rem;
+        position: relative;
+        z-index: 100;
+
+        a {
+            display: block;
+            &:hover {
+                color: $alert-color;
+            }
+        }
+    }
+}
+
+.feed-accordion-title {
+    .title {
+        font-size: 1rem;
+        font-weight: bold;
+        line-height: 1.3rem;
+    }
+}
+
+.feed-actions {
+    font-size: 1rem;
+    text-align: right;
+
+    li {
+        margin: 0.5rem 0;
+
+        .text {
+            vertical-align: top;
+        }
+
+        .icon {
+            font-size: 1.6rem;
+        }
+    }
+}

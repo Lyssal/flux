@@ -1,0 +1,7 @@
+{% if block('actions') is not empty %}
+    {% spaceless %}
+        <div class="page-actions">
+            {% block actions %}{% endblock %}
+        </div>
+    {% endspaceless %}
+{% endif %}

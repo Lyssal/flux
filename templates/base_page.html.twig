@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <title>{% block title %}{% endblock %}</title>
+        {%- block stylesheets -%}
+            <link rel="stylesheet" href="{{ asset('css/app.css') }}">
+        {%- endblock -%}
+    </head>
+    <body>
+        {{ include('include/header.html.twig') }}
+
+        <div class="page" id="page-body">
+            {% if block('actions') is not empty %}
+                {% spaceless %}
+                    <div class="page-actions">
+                        {% block actions %}{% endblock %}
+                    </div>
+                {% endspaceless %}
+            {% endif %}
+            {% if block('title') is defined and block('title') is not empty %}
+                <h1>{{ block('title') }}</h1>
+            {% endif %}
+            {% block body %}{% endblock %}
+        </div>
+
+        {%- block javascripts -%}
+            <script type="text/javascript" src="{{ asset('js/app.js') }}"></script>
+        {%- endblock -%}
+    </body>
+</html>

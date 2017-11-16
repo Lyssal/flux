@@ -1,0 +1,13 @@
+services:
+    app.appellation.category:
+        class: 'App\Appellation\CategoryAppellation'
+        arguments: ['@router']
+        public: false
+        tags:
+            - { name: 'lyssal.appellation' }
+    app.appellation.feed:
+        class: 'App\Appellation\FeedAppellation'
+        arguments: ['@router']
+        public: false
+        tags:
+            - { name: 'lyssal.appellation' }

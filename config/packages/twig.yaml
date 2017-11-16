@@ -1,0 +1,10 @@
+twig:
+    paths:
+        '%kernel.project_dir%/templates': ~
+#        '%kernel.project_dir%/src/Lyssal/rss-bundle/src/Lyssal/RssBundle/Resources/views': 'lyssal_rss'
+    debug: '%kernel.debug%'
+    strict_variables: '%kernel.debug%'
+    date:
+        format: 'd/m/Y, H:i'
+    globals:
+        app_title: '%app.title%'

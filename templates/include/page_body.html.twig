@@ -1,0 +1,13 @@
+{% if block('actions') is not empty %}
+    {% spaceless %}
+        <div class="page-actions">
+            {% block actions %}{% endblock %}
+        </div>
+    {% endspaceless %}
+{% endif %}
+
+{% if block('title') is defined and block('title') is not empty %}
+    <h1>{{ block('title') }}</h1>
+{% endif %}
+
+{% block body %}{% endblock %}

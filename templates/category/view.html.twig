@@ -1,0 +1,79 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}{{ appellation(category) }}{% endblock %}
+
+{% block actions %}
+    <a href="{{ path('flux_category_view', { 'category': category.id }) }}" class="label {{ read is null ? 'primary active' : 'secondary' }}" data-ajax="true">{{ itemCount }} <em class="fa fa-tag"></em></a>
+    <a href="{{ path('flux_category_view', { 'category': category.id, 'read': '0' }) }}" class="label {{ read is not null and false == read ? 'primary active' : 'secondary' }}" data-ajax="true">{{ unreadItemCount }} <em class="fa fa-eye-slash"></em></a>
+    <a href="{{ path('flux_category_view', { 'category': category.id, 'read': '1' }) }}" class="label {{ true == read ? 'primary active' : 'secondary' }}" data-ajax="true">{{ readItemCount }} <em class="fa fa-eye"></em></a>
+{% endblock %}
+
+{% block body %}
+
+    <ul class="accordion accordion-feed" data-accordion data-multi-expand="true" data-allow-all-closed="true">
+        {%- for item in items -%}
+            {% set hasUrl = (item.url is not null) %}
+            <li class="accordion-item" id="feed-item-{{ item.id }}" data-accordion-item>
+                <div class="pull-right delete">
+                    <a href="{{ path('flux_feeditem_remove', { 'feedItem': item.id }) }}" data-ajax="true" data-target="#feed-item-{{ item.id }}"><em class="fa fa-trash"></em></a>
+                </div>
+                <a class="accordion-title feed-accordion-title">
+                    <div class="row">
+                        <div class="medium-9 columns">
+                            <div class="title">
+                                {{ appellation(item) }}
+                            </div>
+                        </div>
+                        <div class="medium-3 columns">
+                            <div class="text-right">
+                                {{ item.date|date }}
+                                <br><strong>{{ appellation(item.feed) }}</strong>
+                            </div>
+                        </div>
+                    </div>
+                </a>
+                <div class="accordion-content" data-tab-content>
+                    <div class="row">
+                        <div class="small-12 medium-3 columns">
+                            {% if item.image is not null %}
+                                {% if hasUrl %}
+                                    <a href="{{ item.url }}" target="_blank">
+                                {% endif %}
+                                <img src="{{ item.image }}">
+                                {% if hasUrl %}
+                                    </a>
+                                {% endif %}
+                            {% endif %}
+                        </div>
+                        <div class="small-12 medium-6 columns">
+                            <h2>
+                                {% if hasUrl %}
+                                    <a href="{{ item.url }}" target="_blank">
+                                {% endif %}
+                                {{ appellation_html(item) }}
+                                {% if hasUrl %}
+                                    </a>
+                                {% endif %}
+                            </h2>
+                            {{ item.description|raw('html') }}
+                            <p><a href="{{ path('flux_feed_viewfile', {'feed': item.feed.id}) }}" data-ajax="true">
+                                <em class="fa fa-rss"></em> &nbsp; {{ appellation(item.feed) }}
+                            </a></p>
+                        </div>
+                        <div class="small-12 medium-3 columns">
+                            <div class="feed-actions">
+                                <ul class="no-bullet">
+                                    {% if hasUrl %}
+                                        <li><a href="{{ item.url }}" target="_blank"><span class="text">{{ 'open'|trans }}</span> &nbsp; <em class="icon fa fa-external-link"></em></a></li>
+                                    {% endif %}
+                                    <li>{{ include('feed_item/read.html.twig', { 'item': item }) }}</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </li>
+        {%- endfor -%}
+    </ul>
+
+{% endblock %}

@@ -1,0 +1,15 @@
+services:
+    app.manager.category:
+        class: '%lyssal.doctrine.orm.entity_manager.class%'
+        arguments: ['@doctrine.orm.entity_manager', '%flux.entity.category%']
+        public: false
+
+    app.manager.feed:
+        class: '%lyssal.doctrine.orm.entity_manager.class%'
+        arguments: ['@doctrine.orm.entity_manager', '%flux.entity.feed%']
+        public: true
+
+    app.manager.feed_item:
+        class: '%lyssal.doctrine.orm.entity_manager.class%'
+        arguments: ['@doctrine.orm.entity_manager', '%flux.entity.feed_item%']
+        public: true
