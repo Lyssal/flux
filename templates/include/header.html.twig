@@ -14,18 +14,20 @@
 {% endmacro %}
 
 {% import _self as header %}
-<div class="top-bar">
-    <div class="top-bar-left">
-        <ul class="dropdown menu" data-dropdown-menu>
-            <li class="menu-text">{{ app_title }}</li>
-            <li>
-                <a>{{ 'categories'|trans }}</a>
-                <ul class="menu vertical" data-dropdown-menu>
-                    {% for category in app_category_parents() %}
-                        {{ header.header_menu_category(category) }}
-                    {% endfor %}
-                </ul>
-            </li>
-        </ul>
+{% spaceless %}
+    <div class="top-bar">
+        <div class="top-bar-left">
+            <ul class="dropdown menu" data-dropdown-menu>
+                <li class="menu-text">{{ app_title }}</li>
+                <li>
+                    <a>{{ 'categories'|trans }}</a>
+                    <ul class="menu vertical" data-dropdown-menu>
+                        {% for category in app_category_parents() %}
+                            {{ header.header_menu_category(category) }}
+                        {% endfor %}
+                    </ul>
+                </li>
+            </ul>
+        </div>
     </div>
-</div>
+{% endspaceless %}
