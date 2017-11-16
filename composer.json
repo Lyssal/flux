@@ -1,6 +1,7 @@
 {
     "name": "lyssal/flux",
     "type": "project",
+    "description": "Flux is an application which read feeds and save new items.",
     "license": "proprietary",
     "minimum-stability": "beta",
     "require": {
