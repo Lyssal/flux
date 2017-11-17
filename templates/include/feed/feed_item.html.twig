@@ -1,0 +1,40 @@
+{% set hasUrl = (item.url is not null) %}
+{% set hasImage = (item.image is not null) %}
+<div class="row">
+    {% if hasImage %}
+        <div class="small-12 medium-3 columns">
+            {% if hasUrl %}
+                <a href="{{ item.url }}" target="_blank">
+            {% endif %}
+            <img src="{{ item.image }}">
+            {% if hasUrl %}
+                </a>
+            {% endif %}
+        </div>
+    {% endif %}
+    <div class="small-12 medium-{{ hasImage ? '6' : '9' }} columns">
+        <h2>
+            {% if hasUrl %}
+                <a href="{{ item.url }}" target="_blank">
+            {% endif %}
+            {{ appellation_html(item) }}
+            {% if hasUrl %}
+                </a>
+            {% endif %}
+        </h2>
+        {{ item.description|raw('html') }}
+        <p><a href="{{ path('flux_feed_viewfile', {'feed': item.feed.id}) }}" data-ajax="true">
+            <em class="fa fa-rss"></em> &nbsp; {{ appellation(item.feed) }}
+        </a></p>
+    </div>
+    <div class="small-12 medium-3 columns">
+        <div class="feed-actions">
+            <ul class="no-bullet">
+                {% if hasUrl %}
+                    <li><a href="{{ item.url }}" target="_blank"><span class="text">{{ 'open'|trans }}</span> &nbsp; <em class="icon fa fa-external-link"></em></a></li>
+                {% endif %}
+                <li>{{ include('feed_item/read.html.twig', { 'item': item }) }}</li>
+            </ul>
+        </div>
+    </div>
+</div>
