@@ -3,7 +3,7 @@
 {% block title %}{{ appellation(category) }}{% endblock %}
 
 {% block actions %}
-    <a href="{{ path('flux_category_view', { 'category': category.id }) }}" class="label {{ read is null ? 'primary active' : 'secondary' }}" data-ajax="true">{{ itemCount }} <em class="fa fa-tag"></em></a>
+    <a href="{{ path('flux_category_view', { 'category': category.id }) }}" class="label {{ read is null ? 'primary active' : 'secondary' }}" data-ajax="true">{{ itemCount }} <em class="fa fa-file-o"></em></a>
     <a href="{{ path('flux_category_view', { 'category': category.id, 'read': '0' }) }}" class="label {{ read is not null and false == read ? 'primary active' : 'secondary' }}" data-ajax="true">{{ unreadItemCount }} <em class="fa fa-eye-slash"></em></a>
     <a href="{{ path('flux_category_view', { 'category': category.id, 'read': '1' }) }}" class="label {{ true == read ? 'primary active' : 'secondary' }}" data-ajax="true">{{ readItemCount }} <em class="fa fa-eye"></em></a>
 {% endblock %}

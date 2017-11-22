@@ -75,6 +75,7 @@ class FeedImport
         $feed->setDescription($feedReader->get_description());
 
         $items = $feedReader->get_items();
+
         if (null !== $items) {
             foreach ($items as $item) {
                 if ($this->importFeedItem($item, $feed)) {
