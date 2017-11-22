@@ -57,11 +57,11 @@ class ImportCommand extends Command
         $feeds = $this->feedManager->findAll();
 
         foreach ($feeds as $feed) {
-            $output->writeln('Reading '.$feed);
+            $output->writeln('Reading '.(null !== $feed->getTitle() ? $feed->getTitle() : 'unknown feed'));
             $savedItemCount = $this->feedImport->importFeed($feed);
 
             if ($savedItemCount > 0) {
-                $output->writeln('  '.$savedItemCount.' item'.($savedItemCount > 1 ? 's' : '').' saved.');
+                $output->writeln('  <fg=green;options=bold>'.$savedItemCount.'</> item'.($savedItemCount > 1 ? 's' : '').' saved.');
             }
         }
     }
