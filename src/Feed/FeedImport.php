@@ -4,6 +4,7 @@ namespace App\Feed;
 use App\Entity\Feed;
 use DateTime;
 use Lyssal\Doctrine\Orm\Manager\EntityManager;
+use Lyssal\Encoding\Utf8;
 use SimplePie;
 use SimplePie_Item;
 
@@ -105,10 +106,13 @@ class FeedImport
         $date = DateTime::createFromFormat(DateTime::ISO8601, $feedDate);
 
         if (null !== $title && null !== $date && !$feed->isDateBeforeLastPast($date)) {
+            $description = new Utf8($item->get_description());
+            $description->encode();
+
             $enclosure = $item->get_enclosure();
             $feedItem = $this->feedItemManager->create([
                 'title' => $title,
-                'description' => $item->get_description(),
+                'description' => $description->getValue(),
                 'url' => $item->get_link(),
                 'image' => (null !== $enclosure ? $enclosure->get_thumbnail() : null),
                 'date' => $date
