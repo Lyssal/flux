@@ -20,7 +20,9 @@ class CategoryController extends Controller
      *
      * @Route("/{category}/View/{read}", name="flux_category_view")
      *
-     * @return Response
+     * @param \App\Entity\Category $category The category
+     *
+     * @return \Symfony\Component\HttpFoundation\Response The view
      */
     public function viewAction(Category $category, $read = null)
     {
@@ -38,5 +40,53 @@ class CategoryController extends Controller
             'readItemCount' => $categoryFeedItemGetter->count($category, true),
             'unreadItemCount' => $categoryFeedItemGetter->count($category, false)
         ]);
+    }
+
+    /**
+     * Return the item count.
+     *
+     * @Route("/{category}/ItemCount", name="flux_category_itemcount")
+     *
+     * @param \App\Entity\Category $category The category
+     *
+     * @return \Symfony\Component\HttpFoundation\Response The response
+     */
+    public function itemCountAction(Category $category)
+    {
+        $categoryFeedItemGetter = new CategoryFeedItemGetter();
+
+        return new Response($categoryFeedItemGetter->count($category));
+    }
+
+    /**
+     * Return the read item count.
+     *
+     * @Route("/{category}/ReadItemCount", name="flux_category_readitemcount")
+     *
+     * @param \App\Entity\Category $category The category
+     *
+     * @return \Symfony\Component\HttpFoundation\Response The response
+     */
+    public function readItemCountAction(Category $category)
+    {
+        $categoryFeedItemGetter = new CategoryFeedItemGetter();
+
+        return new Response($categoryFeedItemGetter->count($category, true));
+    }
+
+    /**
+     * Return the unread item count.
+     *
+     * @Route("/{category}/UnreadItemCount", name="flux_category_unreaditemcount")
+     *
+     * @param \App\Entity\Category $category The category
+     *
+     * @return \Symfony\Component\HttpFoundation\Response The response
+     */
+    public function unreadItemCountAction(Category $category)
+    {
+        $categoryFeedItemGetter = new CategoryFeedItemGetter();
+
+        return new Response($categoryFeedItemGetter->count($category, false));
     }
 }

@@ -3,9 +3,15 @@
 {% block title %}{{ appellation(category) }}{% endblock %}
 
 {% block actions %}
-    <a href="{{ path('flux_category_view', { 'category': category.id }) }}" class="label {{ read is null ? 'primary active' : 'secondary' }}" data-ajax="true">{{ itemCount }} <em class="fa fa-file-o"></em></a>
-    <a href="{{ path('flux_category_view', { 'category': category.id, 'read': '0' }) }}" class="label {{ read is not null and false == read ? 'primary active' : 'secondary' }}" data-ajax="true">{{ unreadItemCount }} <em class="fa fa-eye-slash"></em></a>
-    <a href="{{ path('flux_category_view', { 'category': category.id, 'read': '1' }) }}" class="label {{ true == read ? 'primary active' : 'secondary' }}" data-ajax="true">{{ readItemCount }} <em class="fa fa-eye"></em></a>
+    <a href="{{ path('flux_category_view', { 'category': category.id }) }}" class="label {{ read is null ? 'primary active' : 'secondary' }}" data-ajax="true">
+        <span id="item-count" data-target="#item-count" data-url="{{ path('flux_category_itemcount', { 'category': category.id }) }}">{{ itemCount }}</span> &nbsp; <em class="fa fa-file-o"></em>
+    </a>
+    <a href="{{ path('flux_category_view', { 'category': category.id, 'read': '0' }) }}" class="label {{ read is not null and false == read ? 'primary active' : 'secondary' }}" data-ajax="true">
+        <span id="unread-item-count" data-target="#unread-item-count" data-url="{{ path('flux_category_unreaditemcount', { 'category': category.id }) }}">{{ unreadItemCount }}</span> &nbsp; <em class="fa fa-eye-slash"></em>
+    </a>
+    <a href="{{ path('flux_category_view', { 'category': category.id, 'read': '1' }) }}" class="label {{ true == read ? 'primary active' : 'secondary' }}" data-ajax="true">
+        <span id="read-item-count" data-target="#read-item-count" data-url="{{ path('flux_category_readitemcount', { 'category': category.id }) }}">{{ readItemCount }}</span> &nbsp; <em class="fa fa-eye"></em>
+    </a>
 {% endblock %}
 
 {% block body %}

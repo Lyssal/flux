@@ -1,3 +1,3 @@
-<a href="{{ path('flux_feeditem_read', { 'feedItem': item.id, 'read': (item.read ? '0' : '1') }) }}" id="feed-item-read-{{ item.id }}" data-ajax="true" data-target="#feed-item-read-{{ item.id }}">
+<a href="{{ path('flux_feeditem_read', { 'feedItem': item.id, 'read': (item.read ? '0' : '1') }) }}" id="feed-item-read-{{ item.id }}" data-ajax="true" data-target="#feed-item-read-{{ item.id }}" data-refresh-target="#item-count,#read-item-count,#unread-item-count">
     <span class="text">{{ (item.read ? 'read' : 'unread')|trans }}</span> &nbsp; <em class="icon fa fa-eye{{ item.read ? '' : '-slash' }}"></em>
 </a>
