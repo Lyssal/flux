@@ -64,6 +64,10 @@ class FeedImport
      */
     public function importFeed(Feed $feed)
     {
+        if (!$feed->canImport()) {
+            return 0;
+        }
+
         $itemCount = 0;
         $feedReader = new SimplePie();
         $feedReader->set_cache_location($this->cacheDir);
