@@ -1,6 +1,7 @@
 <?php
 namespace App\Entity;
 
+use DateInterval;
 use DateTime;
 use Doctrine\ORM\Mapping as ORM;
 
@@ -56,6 +57,13 @@ class Feed
      * @ORM\Column(type="datetime", nullable=true)
      */
     private $lastImport;
+
+    /**
+     * @var int The import frequency in days
+     *
+     * @ORM\Column(type="smallint", nullable=true)
+     */
+    private $importFrequency;
 
     /**
      * @var \Doctrine\Common\Collections\ArrayCollection<\App\Entity\FeedItem> The items
@@ -206,6 +214,30 @@ class Feed
     }
 
     /**
+     * Set importFrequency
+     *
+     * @param int $importFrequency
+     *
+     * @return Feed
+     */
+    public function setImportFrequency(?int $importFrequency)
+    {
+        $this->importFrequency = $importFrequency;
+
+        return $this;
+    }
+
+    /**
+     * Get importFrequency
+     *
+     * @return int
+     */
+    public function getImportFrequency()
+    {
+        return $this->importFrequency;
+    }
+
+    /**
      * Add item
      *
      * @param \App\Entity\FeedItem $item
@@ -261,5 +293,22 @@ class Feed
     public function isDateBeforeLastPast(DateTime $date) : bool
     {
         return (null !== $this->lastImport && $date <= $this->lastImport);
+    }
+
+    /**
+     * Return if the feed can be imported.
+     *
+     * @return bool If can be imported
+     */
+    public function canImport() : bool
+    {
+        if (null === $this->importFrequency || null === $this->lastImport) {
+            return true;
+        }
+
+        $limitImportDate = new DateTime();
+        $limitImportDate->sub(new DateInterval('P'.$this->importFrequency.'D'));
+
+        return $limitImportDate > $this->lastImport;
     }
 }
