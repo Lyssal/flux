@@ -1,5 +1,11 @@
 @import "global";
 
+$body-font-color: $white;
+
+$body-background: $main-color-dark;
+
+$anchor-color: $medium-gray;
+
 $foundation-palette: (
   primary: #1d63e7,
   secondary: #767676,
@@ -18,7 +24,7 @@ $header-styles: (
         h6: ('font-size': 16)
     ),
     medium: (
-        h1: ('font-size': 36),
+        h1: ('font-size': 20),
         h2: ('font-size': 28),
         h3: ('font-size': 26),
         h4: ('font-size': 25),
@@ -27,8 +33,18 @@ $header-styles: (
     )
 );
 
-$topbar-background: $main-color-light;
+$label-palette: map-merge($foundation-palette, (
+    default: $main-color-lighter,
+    default-active: $main-color-darker
+)) !default;
+
+$topbar-background: $main-color-darker;
+
+$dropdown-menu-item-color-active: $main-color-light;
 
 $accordion-plusminus: false;
 $accordion-item-padding: 0.75rem 0.25rem;
+$accordion-item-color: $main-color-lighter;
+$accordion-background: $main-color-darker;
+$accordion-content-background: $main-color-darker;
 $accordion-item-background-hover: $main-color;
