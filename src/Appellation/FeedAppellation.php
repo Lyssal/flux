@@ -40,6 +40,6 @@ class FeedAppellation extends AbstractDefaultAppellation
      */
     public function appellationHtml($feed)
     {
-        return '<a href="'.$this->router->generate('flux_feed_view', ['feed' => $feed->getId()]).'">'.$this->appellation($feed).'</a>';
+        return '<a href="'.$this->router->generate('flux_feed_view', ['feed' => $feed->getId()]).'" data-ajax="true">'.$this->appellation($feed).'</a>';
     }
 }

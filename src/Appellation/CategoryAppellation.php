@@ -41,6 +41,6 @@ class CategoryAppellation extends AbstractDefaultAppellation
      */
     public function appellationHtml($category)
     {
-        return '<a href="'.$this->router->generate('flux_category_view', ['category' => $category->getId()]).'" data-ajax="true">'.$this->appellation($category).'</a>';
+        return '<a href="'.$this->router->generate('flux_category_view', ['category' => $category->getId(), 'read' => '0']).'" data-ajax="true">'.$this->appellation($category).'</a>';
     }
 }

@@ -16,32 +16,6 @@
 
 {% block body %}
 
-    <ul class="accordion accordion-feed" data-accordion data-multi-expand="true" data-allow-all-closed="true">
-        {%- for item in items -%}
-            <li class="accordion-item" id="feed-item-{{ item.id }}" data-accordion-item>
-                <div class="pull-right delete">
-                    <a href="{{ path('flux_feeditem_remove', { 'feedItem': item.id }) }}" data-ajax="true" data-target="#feed-item-{{ item.id }}"><em class="fa fa-trash"></em></a>
-                </div>
-                <a class="accordion-title feed-accordion-title">
-                    <div class="row">
-                        <div class="medium-9 columns">
-                            <div class="title">
-                                {{ appellation(item) }}
-                            </div>
-                        </div>
-                        <div class="medium-3 columns">
-                            <div class="text-right">
-                                {{ item.date|date }}
-                                <br><strong>{{ appellation(item.feed) }}</strong>
-                            </div>
-                        </div>
-                    </div>
-                </a>
-                <div class="accordion-content" data-tab-content>
-                    {{ include('include/feed/feed_item.html.twig') }}
-                </div>
-            </li>
-        {%- endfor -%}
-    </ul>
+    {{ include('include/feed/feed_item_list.html.twig') }}
 
 {% endblock %}

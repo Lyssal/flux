@@ -13,19 +13,7 @@
         </div>
     {% endif %}
     <div class="small-12 medium-{{ hasImage ? '6' : '9' }} columns">
-        <h2>
-            {% if hasUrl %}
-                <a href="{{ item.url }}" target="_blank">
-            {% endif %}
-            {{ appellation_html(item) }}
-            {% if hasUrl %}
-                </a>
-            {% endif %}
-        </h2>
         {{ item.description|raw('html') }}
-        <p><a href="{{ path('flux_feed_viewfile', {'feed': item.feed.id}) }}" data-ajax="true">
-            <em class="fa fa-rss"></em> &nbsp; {{ appellation(item.feed) }}
-        </a></p>
     </div>
     <div class="small-12 medium-3 columns">
         <div class="feed-actions">
@@ -34,6 +22,12 @@
                     <li><a href="{{ item.url }}" target="_blank"><span class="text">{{ 'open'|trans }}</span> &nbsp; <em class="icon fa fa-external-link"></em></a></li>
                 {% endif %}
                 <li>{{ include('feed_item/read.html.twig', { 'item': item }) }}</li>
+                <li><a href="{{ path('flux_feed_view', { 'feed': item.feed.id }) }}" data-ajax="true">Lire le flux &nbsp; <em class="icon fa fa-folder-open"></em></a></li>
+                <li>
+                    <a href="{{ path('flux_feed_viewfile', {'feed': item.feed.id}) }}" data-ajax="true">
+                        Lire le fichier flux &nbsp; <em class="icon fa fa-rss"></em>
+                    </a>
+                </li>
             </ul>
         </div>
     </div>

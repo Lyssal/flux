@@ -4,8 +4,6 @@
 
 {% block body %}
 
-    {%- for item in feed.items -%}
-        {{ appellation_html(item) }}
-    {%- endfor -%}
+    {{ include('include/feed/feed_item_list.html.twig', { 'items': feed.items }) }}
 
 {% endblock %}
