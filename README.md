@@ -6,4 +6,6 @@
 
 Flux is an application which read feeds and save new items.
 
+![Flux](doc/flux.png)
+
 See the Makefile for commands.
