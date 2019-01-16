@@ -2,6 +2,7 @@
 namespace App\Feed;
 
 use App\Entity\Feed;
+use App\Exception\FeedException;
 use DateTime;
 use Lyssal\Doctrine\Orm\Manager\EntityManager;
 use SimplePie;
@@ -61,6 +62,8 @@ class FeedImport
      * @param \App\Entity\Feed $feed The feed
      *
      * @return int The count of saved items
+     *
+     * @throws \App\Exception\FeedException If there an error with SimplePie
      */
     public function importFeed(Feed $feed)
     {
@@ -74,6 +77,10 @@ class FeedImport
         $feedReader->set_feed_url($feed->getUrl());
         $feedReader->set_stupidly_fast(true);
         $feedReader->init();
+
+        if (null !== $feedReader->error()) {
+            throw new FeedException(is_array($feedReader->error()) ? implode(' - ', $feedReader->error()) : $feedReader->error());
+        }
 
         $feed->setTitle($feedReader->get_title());
         $feed->setDescription($feedReader->get_description());

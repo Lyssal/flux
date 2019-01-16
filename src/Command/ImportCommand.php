@@ -1,6 +1,7 @@
 <?php
 namespace App\Command;
 
+use App\Exception\FeedException;
 use App\Feed\FeedImport;
 use Lyssal\Doctrine\Orm\Manager\EntityManager;
 use Symfony\Component\Console\Command\Command;
@@ -57,11 +58,17 @@ class ImportCommand extends Command
         $feeds = $this->feedManager->findAll();
 
         foreach ($feeds as $feed) {
-            $feedTitle = (null !== $feed->getTitle() ? $feed->getTitle() : 'unknown feed');
-            $savedItemCount = $this->feedImport->importFeed($feed);
+            $feedTitle = (null !== $feed->getTitle() ? $feed->getTitle() : '<fg=yellow>Titre inconnu</>');
+
+            try {
+                $savedItemCount = $this->feedImport->importFeed($feed);
+            } catch (FeedException $e) {
+                $savedItemCount = 0;
+                $output->writeln('<fg=red;options=bold>'.$feedTitle.' : '.$e->getMessage().'</>');
+            }
 
             if ($savedItemCount > 0) {
-                $output->writeln($feedTitle.':  <fg=green;options=bold>'.$savedItemCount.'</> item'.($savedItemCount > 1 ? 's' : '').' saved.');
+                $output->writeln($feedTitle.' :  <fg=green;options=bold>'.$savedItemCount.'</> item'.($savedItemCount > 1 ? 's' : '').' saved.');
             }
         }
     }
