@@ -50,11 +50,9 @@ gulp.task('fonts', function () {
 });
 
 gulp.task('watch', function () {
-    gulp.watch('assets/styles/**/*.scss', ['css']);
-    gulp.watch('assets/scripts/**/*.js', ['js']);
+    gulp.watch('assets/styles/**/*.scss', gulp.series('css'));
+    gulp.watch('assets/scripts/**/*.js', gulp.series('js'));
 });
 
-gulp
-    .task('default', ['css', 'js', 'fonts'])
-    .task('dev', ['default', 'watch'])
-;
+gulp.task('default', gulp.series(gulp.parallel('css', 'js', 'fonts')));
+gulp.task('dev', gulp.series(gulp.parallel('default', 'watch')));
