@@ -3,23 +3,22 @@
     "type": "project",
     "description": "Flux is an application which read feeds and save new items.",
     "license": "proprietary",
-    "minimum-stability": "beta",
+    "minimum-stability": "stable",
     "require": {
         "php": "^7.0.8",
-        "lyssal/doctrine-orm-bundle": "0.1.*",
-        "lyssal/entity-bundle": "0.1.*",
+        "lyssal/doctrine-orm-bundle": "~0.1",
+        "lyssal/entity-bundle": "~0.1",
         "sensio/framework-extra-bundle": "^5.0",
         "simplepie/simplepie": "^1.5",
-        "symfony/asset": "^4.0@beta",
-        "symfony/console": "^4.0",
+        "symfony/asset": "~4",
+        "symfony/console": "~4",
         "symfony/flex": "^1.0",
-        "symfony/framework-bundle": "^4.0",
-        "symfony/lts": "^4@dev",
+        "symfony/framework-bundle": "~4",
         "symfony/orm-pack": "^1.0",
-        "symfony/translation": "^4.0@beta",
-        "symfony/twig-bundle": "^4.0@beta",
-        "symfony/var-dumper": "^4.0@beta",
-        "symfony/yaml": "^4.0"
+        "symfony/translation": "~4",
+        "symfony/twig-bundle": "~4",
+        "symfony/var-dumper": "~4",
+        "symfony/yaml": "~4"
     },
     "require-dev": {
         "symfony/dotenv": "^4.0"
@@ -33,11 +32,6 @@
     "autoload": {
         "psr-4": {
             "App\\": "src/"
-        }
-    },
-    "autoload-dev": {
-        "psr-4": {
-            "App\\Tests\\": "tests/"
         }
     },
     "scripts": {
@@ -57,8 +51,8 @@
     },
     "extra": {
         "symfony": {
-            "id": "01BYB75RD0FK0TT7JY1FMS51HP",
-            "allow-contrib": false
+            "allow-contrib": false,
+            "require": "4.2.*"
         }
     }
 }

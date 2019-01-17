@@ -8,9 +8,6 @@
             "ref": "e921bdbfe20cdefa3b82f379d1cd36df1bc8d115"
         }
     },
-    "symfony/lts": {
-        "version": "4-dev"
-    },
     "psr/log": {
         "version": "1.0.2"
     },
@@ -217,5 +214,23 @@
     },
     "lyssal/entity-bundle": {
         "version": "0.1.1"
+    },
+    "symfony/contracts": {
+        "version": "v1.0.2"
+    },
+    "doctrine/reflection": {
+        "version": "v1.0.0"
+    },
+    "doctrine/event-manager": {
+        "version": "v1.0.0"
+    },
+    "doctrine/persistence": {
+        "version": "v1.1.0"
+    },
+    "symfony/polyfill-ctype": {
+        "version": "v1.10.0"
+    },
+    "symfony/var-exporter": {
+        "version": "v4.2.2"
     }
 }
