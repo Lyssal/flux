@@ -29,9 +29,7 @@ gulp.task('js', function () {
         .src([
             'node_modules/jquery/dist/jquery.min.js',
             'node_modules/foundation-sites/dist/js/foundation.min.js',
-            'node_modules/lyssal-lib-web/src/ajax-page-loader.js',
-            'node_modules/lyssal-lib-web/src/blinking.js',
-            'node_modules/lyssal-lib-web/src/navigation.js',
+            'node_modules/@lyssal/ajax-page-loader/lib/ajax-page-loader.var.js',
             'assets/scripts/app.js'
         ])
         .pipe(plumber())

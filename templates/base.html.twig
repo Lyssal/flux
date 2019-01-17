@@ -1,1 +1,1 @@
-{% extends app.request.xmlHttpRequest ? 'include/page_body.html.twig' : 'base_page.html.twig' %}
+{% extends app.request.headers.get('X-Requested-With') == 'Fetch' ? 'include/page_body.html.twig' : 'base_page.html.twig' %}

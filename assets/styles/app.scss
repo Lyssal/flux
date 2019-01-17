@@ -8,5 +8,7 @@
 $fa-font-path: "/fonts";
 @import "font-awesome";
 
+@import '../../node_modules/@lyssal/ajax-page-loader/lib/ajax-page-loader.css';
+
 @import 'include/page';
 @import 'include/feed';

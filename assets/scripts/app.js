@@ -1,11 +1,9 @@
 $(document).foundation();
 
-Lyssal_AjaxPageLoader.initAjaxLinks();
-Lyssal_AjaxPageLoader.TARGET_DEFAULT = $('#page-body');
-Lyssal_AjaxPageLoader.LOADING_TYPE = Lyssal_AjaxPageLoader.LOADING_TYPE_LYSSAL_BLINKING;
-Lyssal_AjaxPageLoader.AFTER_AJAX_LOADING_DEFAULT = function (element) {
-    var targetElement = ($(element).is('[data-target]') ? $(element).attr('data-target') : Lyssal_AjaxPageLoader.TARGET_DEFAULT);
+var ajaxPageLoader = new AjaxPageLoader();
+ajaxPageLoader.setDefaultTarget('#page-body');
+ajaxPageLoader.setAfterAjaxLoadingEvent(function (ajaxLink) {
+  var targetElement = ($(ajaxLink).is('[data-target]') ? $(ajaxLink).attr('data-target') : ajaxLink.getTargetElement());
 
-    $(targetElement).foundation();
-    //Lyssal_Navigation.setStateUrl(Lyssal_AjaxPageLoader.getUrl(element));
-};
+  $(targetElement).foundation();
+});

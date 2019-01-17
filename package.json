@@ -6,17 +6,17 @@
   "author": "Rémi Leclerc",
   "license": "ISC",
   "devDependencies": {
+    "@lyssal/ajax-page-loader": "~0.1",
     "font-awesome": "^4.7.0",
-    "foundation-sites": "^6.4",
-    "gulp": "^3.9.1",
-    "gulp-clean-css": "^3.9.0",
+    "foundation-sites": "^6.5.0",
+    "gulp": "^4.0.0",
+    "gulp-clean-css": "^3.10.0",
     "gulp-concat": "^2.6.1",
-    "gulp-plumber": "^1.1.0",
-    "gulp-sass": "^3.1.0",
-    "gulp-sourcemaps": "^2.6.1",
-    "gulp-uglify": "^3.0.0",
+    "gulp-plumber": "^1.2.0",
+    "gulp-sass": "^3.2.1",
+    "gulp-sourcemaps": "^2.6.4",
+    "gulp-uglify": "^3.0.1",
     "gulp-watch": "^4.3.11",
-    "jquery": "^3.2.1",
-    "lyssal-lib-web": "git://github.com/Lyssal/lib-web.git"
+    "jquery": "^3.3.1"
   }
 }
