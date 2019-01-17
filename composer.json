@@ -2,7 +2,7 @@
     "name": "lyssal/flux",
     "type": "project",
     "description": "Flux is an application which read feeds and save new items.",
-    "license": "proprietary",
+    "license": "MIT",
     "minimum-stability": "stable",
     "require": {
         "php": "^7.0.8",
