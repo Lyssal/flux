@@ -9,3 +9,6 @@ serve:
 asset-watch:
 	gulp
 	gulp watch
+
+import:
+	bin/console app:feed:import
